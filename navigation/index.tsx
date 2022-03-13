@@ -37,9 +37,9 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
       theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
         <Stack.Navigator>
           
-          <Stack.Screen name='Patient' component={PatientCreateScreen} options={{ title: 'Add Patient' }} />
-          <Stack.Screen name='TodayReport' component={TodayReportsScreen} options={{ title: 'Daily Reports' }} />
           <Stack.Screen name='Appointment' component={AppointmentScreen} options={{ title: 'Add a visit' }} />
+          <Stack.Screen name='TodayReport' component={TodayReportsScreen} options={{ title: 'Daily Reports' }} />
+          <Stack.Screen name='Patient' component={PatientCreateScreen} options={{ title: 'Add Patient' }} />
           <Stack.Screen name='Home' component={HomeScreen} options={{ title: 'Main' }} />
         </Stack.Navigator>     
     </NavigationContainer>

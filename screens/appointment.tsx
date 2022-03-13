@@ -40,7 +40,7 @@ const AppointmentScreen = ({ navigation }: RootTabScreenProps<'Appointment'>) =>
 
     return (
 
-        <View style={[ContainerStyles.container, tw `divide-y-10`]}>
+        <View style={[ContainerStyles.container, tw`divide-y-10`]}>
 
 
             {/* Add Patient Clinic Visit Details */}
@@ -70,7 +70,7 @@ const AppointmentScreen = ({ navigation }: RootTabScreenProps<'Appointment'>) =>
                     Site
                 </Text>
                 <Picker
-                style={PickerStyles.picker}
+                    style={PickerStyles.picker}
                     selectedValue={selectedLanguage}
                     onValueChange={(itemValue, itemIndex) =>
                         setSelectedLanguage(itemValue)
@@ -81,7 +81,7 @@ const AppointmentScreen = ({ navigation }: RootTabScreenProps<'Appointment'>) =>
 
                 {/* ART number */}
 
-                
+
                 <TextInput
                     placeholder="ART #"
                 />
@@ -111,101 +111,104 @@ const AppointmentScreen = ({ navigation }: RootTabScreenProps<'Appointment'>) =>
                 {/* visit date */}
 
 
+                <Text style={tw`pt-6 font-large text-center`}>
+                    The following forms will be hidden initialy...
+                </Text>
                 {/* Patients ART Dispensation */}
 
             </View>
-
+            <Text style={tw`pt-6 font-large text-center`}>
+                ART Dispensation
+            </Text>
             {/* art Dispensation */}
-            <View >
-                <Text style={tw`pt-6 font-large text-center`}>
-                    ART Dispensation
-                </Text>
-
-                {/* Weight */}
-                <TextInput
-
-                    placeholder="weight"
-                />
-
-                {/* height */}
-                <TextInput
-
-                    placeholder="height"
-                />
-                {/* blood_pressure */}
-                <TextInput
-
-                    placeholder="blood_pressure"
-                />
-                {/* side_effect */}
-                <TextInput
-
-                    placeholder="side_effect"
-                />  {/* tb_status */}
-                <TextInput
-
-                    placeholder="tb_status"
-                />  {/* dose_missed */}
-                <TextInput
-
-                    placeholder="dose_missed"
-                />  {/* pill count */}
-                <TextInput
-
-                    placeholder="pill count"
-                />  {/* Art Given */}
-                <TextInput
-
-                    placeholder="Art Given"
-                />
-                {/* number of pills */}
-                <TextInput
-
-                    placeholder="number of pills"
-                />
-                {/* number of pyridoxine */}
-                <TextInput
-
-                    placeholder="number of pyridoxine"
-                />
-
-                {/* inh */}
-                <TextInput
-
-                    placeholder="inh"
-                />
-                {/* blood_pressure drug */}
-                <TextInput
-
-                    placeholder="blood_pressure drug"
-                />
-                {/* number of tabs */}
-                <TextInput
-
-                    placeholder="number of tabs"
-                />
-
-                {/* fp method */}
-                <TextInput
-
-                    placeholder="fp method"
-                />
-
-                {/* number of condoms */}
-                <TextInput
-
-                    placeholder="number of condoms"
-                />
+            <View key={"art_dispensation"}>
+                <View >
 
 
+                    {/* Weight */}
+                    <TextInput
+
+                        placeholder="weight"
+                    />
+
+                    {/* height */}
+                    <TextInput
+
+                        placeholder="height"
+                    />
+                    {/* blood_pressure */}
+                    <TextInput
+
+                        placeholder="blood_pressure"
+                    />
+                    {/* side_effect */}
+                    <TextInput
+
+                        placeholder="side_effect"
+                    />  {/* tb_status */}
+                    <TextInput
+
+                        placeholder="tb_status"
+                    />  {/* dose_missed */}
+                    <TextInput
+
+                        placeholder="dose_missed"
+                    />  {/* pill count */}
+                    <TextInput
+
+                        placeholder="pill count"
+                    />  {/* Art Given */}
+                    <TextInput
+
+                        placeholder="Art Given"
+                    />
+                    {/* number of pills */}
+                    <TextInput
+
+                        placeholder="number of pills"
+                    />
+                    {/* number of pyridoxine */}
+                    <TextInput
+
+                        placeholder="number of pyridoxine"
+                    />
+
+                    {/* inh */}
+                    <TextInput
+
+                        placeholder="inh"
+                    />
+                    {/* blood_pressure drug */}
+                    <TextInput
+
+                        placeholder="blood_pressure drug"
+                    />
+                    {/* number of tabs */}
+                    <TextInput
+
+                        placeholder="number of tabs"
+                    />
+
+                    {/* fp method */}
+                    <TextInput
+
+                        placeholder="fp method"
+                    />
+
+                    {/* number of condoms */}
+                    <TextInput
+
+                        placeholder="number of condoms"
+                    />
+
+
+                </View>
             </View>
+            <Text style={tw`pt-6 font-large text-center`}>
+                Viral Load
+            </Text>
             {/* Viral load */}
-            <View>
-                <Text style={tw`pt-6 font-large text-center`}>
-                    Viral Load
-                </Text>
-
-
+            <View key={"viral_load"} >
                 {/* regimen */}
                 <TextInput
 
@@ -236,7 +239,6 @@ const AppointmentScreen = ({ navigation }: RootTabScreenProps<'Appointment'>) =>
 
                     placeholder="remark"
                 />
-
             </View>
         </View>
 
