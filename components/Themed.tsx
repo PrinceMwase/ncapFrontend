@@ -3,7 +3,9 @@
  * https://docs.expo.io/guides/color-schemes/
  */
 
-import { Text as DefaultText, View as DefaultView, Button as DefaultButton } from 'react-native';
+import React from 'react';
+import { Text as DefaultText, View as DefaultView, Button as DefaultButton, TextInput as DeafultTextInput, createElement } from 'react-native';
+import tw, { useDeviceContext } from 'twrnc';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
@@ -27,9 +29,25 @@ type ThemeProps = {
   darkColor?: string;
 };
 
+class DefaultPassword extends React.Component<any, any> {
+  
+
+  
+  render() {
+    
+    return createElement('input', {
+      type: 'password',
+      onInput: onchange,
+      
+    })
+  }
+}
+
 export type TextProps = ThemeProps & DefaultText['props'];
 export type ViewProps = ThemeProps & DefaultView['props'];
 export type ButtonProps = ThemeProps & DefaultButton['props'];
+export type TextInputProps = ThemeProps & DeafultTextInput['props'];
+export type PasswordProps = ThemeProps & DefaultPassword['props']
 
 export function Text(props: TextProps) {
   const { style, lightColor, darkColor, ...otherProps } = props;
@@ -49,4 +67,17 @@ export function Button(props: ButtonProps) {
   const backgroundColor = useThemeColor({ light: lightColor, dark: darkColor }, 'background');
 
   return <DefaultView style={[{ backgroundColor }]} {...otherProps} />;
+}
+export function TextInput(props: TextInputProps) {
+  const { lightColor, darkColor, ...otherProps } = props;
+  const backgroundColor = useThemeColor({ light: lightColor, dark: darkColor }, 'background');
+  console.log(backgroundColor);
+  
+  return <DeafultTextInput style={[{ backgroundColor }, tw`pt-1 border-gray-500 border-b-2 my-2 py-1 `]  } {...otherProps} />;
+}
+
+export function MyPassword(props: TextInputProps) {
+  const { lightColor, darkColor, ...otherProps } = props;
+  const backgroundColor = useThemeColor({ light: lightColor, dark: darkColor }, 'background');
+  return <DefaultPassword style={[{ backgroundColor }]} {...otherProps} />;
 }
