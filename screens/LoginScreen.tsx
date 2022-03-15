@@ -9,6 +9,13 @@ import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import store from "../store";
 import axios, { AxiosResponse } from "axios";
+import { connect } from 'react-redux';
+import { user_login} from '../actions/login'
+import { bindActionCreators } from 'redux';
+import ContainerStyles from "../styles/container";
+import TitleStyles from "../styles/title";
+import SeparatorStyles from "../styles/separator";
+import TodayReportsScreen from "./TodayReport";
 
 const LoginScreen = ({ navigation }: RootTabScreenProps<'TodayReport'>) => {
     useDeviceContext(tw);
@@ -16,6 +23,8 @@ const LoginScreen = ({ navigation }: RootTabScreenProps<'TodayReport'>) => {
 
     let unsubscibe: any
 
+
+    
     const colorScheme = useColorScheme();
 
     type Credentials = {
@@ -30,34 +39,38 @@ const LoginScreen = ({ navigation }: RootTabScreenProps<'TodayReport'>) => {
 
     function login(data: Credentials) {
         
-        console.log(data);
-        navigation.navigate('Appointment')
+        axios.post('api-token-auth/', data).then( (value: AxiosResponse)=>{
+            navigation.navigate('TodayReport')
+            
+        } ).catch( (reason)=>{
+            console.log( "failed Because " + reason );
+            
+        } )
 
     }
 
 
     return (
-        <View>
-            <View style={tw``}>
+        <View style={ContainerStyles.container}>
+                <Text style={TitleStyles.title}>Sign In</Text>            
+
+                <View style={SeparatorStyles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+
 
                 {/* Username */}
-                <Text>
-                    Enter username {username}
-                </Text>
+                
 
                 <TextInput
-                    style={{ fontSize: 42, color: 'steelblue' }}
+                   
                     placeholder="Username"
                     value={username}
                     onChangeText={(username) => { setUsername(username); }}
                 />
 
                 {/* password */}
-                <Text>
-                    Enter your password {password}
-                </Text>
+               
                 <TextInput
-                    style={{ fontSize: 42, color: 'steelblue' }}
+                    
                     value={password}
                     placeholder="Password"
                     onChangeText={(password) => { setPassword(password) }}
@@ -80,7 +93,7 @@ const LoginScreen = ({ navigation }: RootTabScreenProps<'TodayReport'>) => {
                         Sign in
                     </Text>
                 </Pressable>
-            </View>
+            
         </View>
 
     );

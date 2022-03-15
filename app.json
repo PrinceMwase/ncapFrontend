@@ -1,4 +1,11 @@
 {
+  "ios": { 
+    "bundleIdentifier": "ncapfrontend"
+  },
+
+  "android": { 
+    "package": "ncapfrontend"
+  },
   "expo": {
     "name": "ncapFrontend",
     "slug": "ncapFrontend",

@@ -71,7 +71,6 @@ export function Button(props: ButtonProps) {
 export function TextInput(props: TextInputProps) {
   const { lightColor, darkColor, ...otherProps } = props;
   const backgroundColor = useThemeColor({ light: lightColor, dark: darkColor }, 'background');
-  console.log(backgroundColor);
   
   return <DeafultTextInput style={[{ backgroundColor }, tw`pt-1 border-gray-500 border-b-2 my-2 py-1 `]  } {...otherProps} />;
 }
