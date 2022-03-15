@@ -1,9 +1,8 @@
 {
-  "ios": { 
+  "ios": {
     "bundleIdentifier": "ncapfrontend"
   },
-
-  "android": { 
+  "android": {
     "package": "ncapfrontend"
   },
   "expo": {
@@ -17,7 +16,7 @@
     "androidStatusBar": {
       "barStyle": "dark-content",
       "backgroundColor": "#FFFFFF"
-      },      
+    },
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
@@ -30,13 +29,15 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "ncap.ncapp"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "ncap.ncapp"
     },
     "web": {
       "favicon": "./assets/images/favicon.png"
