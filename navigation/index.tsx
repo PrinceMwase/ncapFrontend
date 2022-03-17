@@ -4,10 +4,10 @@
  *
  */
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createNativeStackNavigator, } from '@react-navigation/native-stack';
 import * as React from 'react';
 import { ColorSchemeName } from 'react-native';
-
+import { DrawerAndroid, Text } from '../components/Themed';
 
 import HomeScreen from '../screens/Home';
 import TodayReportsScreen from '../screens/TodayReport';
@@ -15,8 +15,20 @@ import LinkingConfiguration from './LinkingConfiguration';
 import AppointmentScreen from '../screens/appointment';
 import PatientCreateScreen from '../screens/Patient/PatientCreateScreen';
 import LoginScreen from '../screens/LoginScreen';
-
+import TitleStyles from '../styles/title';
+import { createDrawerNavigator } from '@react-navigation/drawer'
 const Stack = createNativeStackNavigator();
+
+const Drawer = createDrawerNavigator();
+
+function MyDrawer (){
+  return (
+    <Drawer.Navigator>
+      <Drawer.Screen name="TodayReport" component={TodayReportsScreen} />
+    </Drawer.Navigator>
+  )
+}
+
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
 
 
@@ -25,7 +37,9 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
     <NavigationContainer
       linking={LinkingConfiguration}
       theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+        <MyDrawer/>
         <Stack.Navigator>
+        
         <Stack.Screen name='login' component={LoginScreen} options={{ title: 'Log in' }} />          
           <Stack.Screen name='Patient' component={PatientCreateScreen} options={{ title: 'Add Patient' }} />
           <Stack.Screen name='TodayReport' component={TodayReportsScreen} options={{ title: 'Daily Reports' }} />

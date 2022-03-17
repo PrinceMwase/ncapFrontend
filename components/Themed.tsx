@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { Text as DefaultText, View as DefaultView, Button as DefaultButton, TextInput as DeafultTextInput, createElement } from 'react-native';
+import { Text as DefaultText, View as DefaultView, Button as DefaultButton, TextInput as DeafultTextInput, createElement, DrawerLayoutAndroid as DefaultDrawerLayoutAndroid  } from 'react-native';
 import tw, { useDeviceContext } from 'twrnc';
 
 import Colors from '../constants/Colors';
@@ -48,6 +48,7 @@ export type ViewProps = ThemeProps & DefaultView['props'];
 export type ButtonProps = ThemeProps & DefaultButton['props'];
 export type TextInputProps = ThemeProps & DeafultTextInput['props'];
 export type PasswordProps = ThemeProps & DefaultPassword['props']
+export type DrawerProps = ThemeProps & DefaultDrawerLayoutAndroid['props']
 
 export function Text(props: TextProps) {
   const { style, lightColor, darkColor, ...otherProps } = props;
@@ -72,11 +73,18 @@ export function TextInput(props: TextInputProps) {
   const { lightColor, darkColor, ...otherProps } = props;
   const backgroundColor = useThemeColor({ light: lightColor, dark: darkColor }, 'background');
   
-  return <DeafultTextInput style={[{ backgroundColor }, tw`pt-1 border-gray-500 border-b-2 my-2 py-1 `]  } {...otherProps} />;
+  return <DeafultTextInput style={[{ backgroundColor }, tw`pt-1 border-gray-500 border-b-2 my-2 py-1 w-1/2`]  } {...otherProps} />;
 }
 
 export function MyPassword(props: TextInputProps) {
   const { lightColor, darkColor, ...otherProps } = props;
   const backgroundColor = useThemeColor({ light: lightColor, dark: darkColor }, 'background');
   return <DefaultPassword style={[{ backgroundColor }]} {...otherProps} />;
+}
+
+export function DrawerAndroid(props: DrawerProps){
+  const { lightColor, darkColor, ...otherProps } = props;
+  const backgroundColor = useThemeColor({ light: lightColor, dark: darkColor }, 'background');
+
+  return <DefaultDrawerLayoutAndroid style = {[{backgroundColor}]} {...otherProps} />
 }

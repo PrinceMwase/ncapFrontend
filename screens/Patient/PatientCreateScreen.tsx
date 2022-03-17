@@ -5,7 +5,7 @@ import { Pressable, StyleSheet, ColorSchemeName } from 'react-native';
 import Colors from '../../constants/Colors';
 import tw, { useDeviceContext } from 'twrnc';
 import EditScreenInfo from '../../components/EditScreenInfo';
-import { Text, View, TextInput } from '../../components/Themed';
+import { Text, View, TextInput, DrawerAndroid } from '../../components/Themed';
 import { RootTabScreenProps } from '../../types';
 
 import useColorScheme from '../../hooks/useColorScheme';
@@ -21,6 +21,12 @@ export default function Home({ navigation }: RootTabScreenProps<'Patient'>) {
   const [selectedGender, setSelectedGender] = useState();
   return (
     <View style={ContainerStyles.container}>
+        <DrawerAndroid
+            drawerLockMode='locked-open'
+            renderNavigationView={ ()=>{
+              return (<Text style={TitleStyles.title}>Sign In</Text>)
+            } }
+          />
       <Text style={TitleStyles.title}>Add Patient</Text>
 
 

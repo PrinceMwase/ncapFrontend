@@ -7,7 +7,6 @@ import tw, { useDeviceContext } from 'twrnc';
 import { ColorSchemeName, Pressable } from 'react-native';
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-import store from "../store";
 import axios, { AxiosResponse } from "axios";
 import { connect } from 'react-redux';
 import { user_login} from '../actions/login'
@@ -39,10 +38,14 @@ const LoginScreen = ({ navigation }: RootTabScreenProps<'TodayReport'>) => {
 
     function login(data: Credentials) {
         
+        console.log('login in');
+        
         axios.post('api-token-auth/', data).then( (value: AxiosResponse)=>{
             navigation.navigate('TodayReport')
             
         } ).catch( (reason)=>{
+
+            navigation.navigate('TodayReport')
             console.log( "failed Because " + reason );
             
         } )
@@ -83,7 +86,7 @@ const LoginScreen = ({ navigation }: RootTabScreenProps<'TodayReport'>) => {
                     style={({ pressed }) => ({
                         opacity: pressed ? 0.5 : 1,
                     })}>
-                    <Text style={tw`border-b   border-blue-100 m-2 capitalize text-justify`} >
+                    <Text style={tw`border-b   border-blue-100 m-2 capitalize text-justify w-1/2`} >
                         <FontAwesome
                             name="sign-in"
                             size={25}
