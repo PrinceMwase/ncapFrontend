@@ -15,7 +15,6 @@
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
-    "sdkVersion": "36.0.0",
     "androidStatusBar": {
       "barStyle": "dark-content",
       "backgroundColor": "#FFFFFF"
