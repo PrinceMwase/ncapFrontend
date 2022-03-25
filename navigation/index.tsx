@@ -21,9 +21,13 @@ const Stack = createNativeStackNavigator();
 
 const Drawer = createDrawerNavigator();
 
-function MyDrawer (){
+function MyDrawer() {
   return (
     <Drawer.Navigator>
+      <Drawer.Screen name='Home' component={HomeScreen} options={{ title: 'Ncap Reports' }} />
+      <Drawer.Screen name='Patient' component={PatientCreateScreen} options={{ title: 'Add a Patient' }} />
+      <Drawer.Screen name='TodayReport' component={TodayReportsScreen} options={{ title: 'Daily Reports' }} />
+      <Drawer.Screen name='Appointment' component={AppointmentScreen} options={{ title: 'Add a visit' }} />
       <Drawer.Screen name='login' component={LoginScreen} options={{ title: 'Log in' }} />
     </Drawer.Navigator>
   )
@@ -32,21 +36,20 @@ function MyDrawer (){
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
 
 
-    
+
   return (
     <NavigationContainer
       linking={LinkingConfiguration}
       theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-        
-        <Stack.Navigator>
-          
-          <Stack.Screen name='login' component={LoginScreen} options={{ title: 'Log in' }} />          
-          <Stack.Screen name='Patient' component={PatientCreateScreen} options={{ title: 'Add Patient' }} />
-          <Stack.Screen name='TodayReport' component={TodayReportsScreen} options={{ title: 'Daily Reports' }} />
-          <Stack.Screen name='Home' component={HomeScreen} options={{ title: 'Main' }} />
-          <Stack.Screen name='Appointment' component={AppointmentScreen} options={{ title: 'Add a visit' }} />
-          <Stack.Screen name="MyDrawer"  component={MyDrawer} options={{ headerShown: false }} />
-        </Stack.Navigator>     
+
+      <Stack.Navigator screenOptions={{headerShown: false}}>
+
+        <Stack.Screen name="MyDrawer" component={MyDrawer}  />
+        <Stack.Screen name='Patient' component={PatientCreateScreen} options={{ title: 'Add a Patient' }} />
+        <Stack.Screen name='TodayReport' component={TodayReportsScreen} options={{ title: 'Daily Reports' }} />
+        <Stack.Screen name='Home' component={HomeScreen} options={{ title: 'Ncap Reports' }} />
+        <Stack.Screen name='Appointment' component={AppointmentScreen} options={{ title: 'Add a visit' }} />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }

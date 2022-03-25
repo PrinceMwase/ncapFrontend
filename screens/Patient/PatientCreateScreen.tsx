@@ -5,7 +5,7 @@ import { Pressable, StyleSheet, ColorSchemeName } from 'react-native';
 import Colors from '../../constants/Colors';
 import tw, { useDeviceContext } from 'twrnc';
 import EditScreenInfo from '../../components/EditScreenInfo';
-import { Text, View, TextInput, DrawerAndroid } from '../../components/Themed';
+import { Text, View, TextInput,  ScrollView } from '../../components/Themed';
 import { RootTabScreenProps } from '../../types';
 
 import useColorScheme from '../../hooks/useColorScheme';
@@ -19,14 +19,16 @@ export default function Home({ navigation }: RootTabScreenProps<'Patient'>) {
   useDeviceContext(tw);
   const colorScheme = useColorScheme();
   const [selectedGender, setSelectedGender] = useState();
+  const ScrollViewstyles = StyleSheet.create({
+    contentContainer: {
+      
+      flex: 1,
+      alignItems: 'center',
+
+    }
+  });
   return (
-    <View style={ContainerStyles.container}>
-        <DrawerAndroid
-            drawerLockMode='locked-open'
-            renderNavigationView={ ()=>{
-              return (<Text style={TitleStyles.title}>Sign In</Text>)
-            } }
-          />
+    <ScrollView contentContainerStyle={ScrollViewstyles.contentContainer}>
       <Text style={TitleStyles.title}>Add Patient</Text>
 
 
@@ -82,7 +84,7 @@ export default function Home({ navigation }: RootTabScreenProps<'Patient'>) {
 
 
 
-    </View>
+    </ScrollView>
   );
 }
 
